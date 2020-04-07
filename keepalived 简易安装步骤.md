@@ -6,26 +6,29 @@
 
 vim /etc/hosts 
 >>>>
-`127.0.0.1   keepd132`
-
+```Bash
+127.0.0.1   keepd132
+```
 安装依赖：
 ------
-`yum -y install kernel-devel* opensel-* popt-devel lrzsz openssl-clients libnl libnl-devel popt openssl* gcc*`
-
+```Bash
+yum -y install kernel-devel* opensel-* popt-devel lrzsz openssl-clients libnl libnl-devel popt openssl* gcc*
+```
 
 配置：
 ------
 >>>>
+```Bash
 mkdir /etc/keepalived
-`cp /usr/local/keepalived/etc/sbin/keepalived /usr/local/sbin/keepalived`
-`cp /usr/local/keepalived/etc/sysconfig/keepalived /etc/sysconfig/keepalived`
-`vim /etc/keepalived/keepalived.conf`
-
+cp /usr/local/keepalived/etc/sbin/keepalived /usr/local/sbin/keepalived
+cp /usr/local/keepalived/etc/sysconfig/keepalived /etc/sysconfig/keepalived
+vim /etc/keepalived/keepalived.conf
+```
 
 最简单的keepalived.conf配置：
 ------
 >>>>>>>>
-`
+```Bash
 global_defs {
    router_id keepd132
 }
@@ -54,8 +57,7 @@ vrrp_instance VI_1 {
         192.168.75.100
     }
 }
-`
-<<<<<<<<<<<
+```
 
 
 健康检查：
@@ -63,7 +65,7 @@ vrrp_instance VI_1 {
 `vim /etc/keepalived/chk_nginx.sh`
 >>>>>>>>>>>
 
-`
+```Bash
 #!/bin/bash
 val=`ps -C nginx -no-header | wc -l`
 if [ $val -eq 0 ]; then
@@ -73,7 +75,7 @@ if [ $val -eq 0 ]; then
     kellall keepalived
   fi
 fi
-`
+```
 
 
 启动：
