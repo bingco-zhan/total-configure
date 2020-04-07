@@ -1,31 +1,31 @@
 下载地址：
 ------
-https://www.keepalived.org/download.html
+[keepalived](https://www.keepalived.org/download.html "点击下载")
 
 
 
 vim /etc/hosts 
 >>>>
-127.0.0.1   keepd132
+`127.0.0.1   keepd132`
 
 安装依赖：
 ------
-yum -y install kernel-devel* opensel-* popt-devel lrzsz openssl-clients libnl libnl-devel popt openssl* gcc*
+`yum -y install kernel-devel* opensel-* popt-devel lrzsz openssl-clients libnl libnl-devel popt openssl* gcc*`
 
 
 配置：
 ------
 >>>>
 mkdir /etc/keepalived
-cp /usr/local/keepalived/etc/sbin/keepalived /usr/local/sbin/keepalived
-cp /usr/local/keepalived/etc/sysconfig/keepalived /etc/sysconfig/keepalived
-vim /etc/keepalived/keepalived.conf
+`cp /usr/local/keepalived/etc/sbin/keepalived /usr/local/sbin/keepalived`
+`cp /usr/local/keepalived/etc/sysconfig/keepalived /etc/sysconfig/keepalived`
+`vim /etc/keepalived/keepalived.conf`
 
 
 最简单的keepalived.conf配置：
 ------
 >>>>>>>>
-
+`
 global_defs {
    router_id keepd132
 }
@@ -54,16 +54,16 @@ vrrp_instance VI_1 {
         192.168.75.100
     }
 }
-
+`
 <<<<<<<<<<<
 
 
 健康检查：
 ------
-vim /etc/keepalived/chk_nginx.sh
+`vim /etc/keepalived/chk_nginx.sh`
 >>>>>>>>>>>
 
-
+`
 #!/bin/bash
 val=`ps -C nginx -no-header | wc -l`
 if [ $val -eq 0 ]; then
@@ -73,11 +73,11 @@ if [ $val -eq 0 ]; then
     kellall keepalived
   fi
 fi
-
+`
 
 
 启动：
 ------
-keepalived
+`keepalived`
 
 
