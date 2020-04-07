@@ -1,4 +1,5 @@
 下载地址：
+------
 https://www.keepalived.org/download.html
 
 
@@ -8,10 +9,12 @@ vim /etc/hosts
 127.0.0.1   keepd132
 
 安装依赖：
+------
 yum -y install kernel-devel* opensel-* popt-devel lrzsz openssl-clients libnl libnl-devel popt openssl* gcc*
 
 
 配置：
+------
 >>>>
 mkdir /etc/keepalived
 cp /usr/local/keepalived/etc/sbin/keepalived /usr/local/sbin/keepalived
@@ -20,6 +23,7 @@ vim /etc/keepalived/keepalived.conf
 
 
 最简单的keepalived.conf配置：
+------
 >>>>>>>>
 
 global_defs {
@@ -55,6 +59,7 @@ vrrp_instance VI_1 {
 
 
 健康检查：
+------
 vim /etc/keepalived/chk_nginx.sh
 >>>>>>>>>>>
 
@@ -72,6 +77,7 @@ fi
 
 
 启动：
+------
 keepalived
 
 
